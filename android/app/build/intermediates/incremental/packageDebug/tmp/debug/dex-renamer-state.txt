@@ -1,0 +1,4 @@
+#Thu Sep 10 19:49:19 SAST 2020
+base.0=/Users/warrenmanley/projects/BeenThere/android/app/build/intermediates/dex/debug/mergeDexDebug/out/classes.dex
+path.0=classes.dex
+renamed.0=classes.dex

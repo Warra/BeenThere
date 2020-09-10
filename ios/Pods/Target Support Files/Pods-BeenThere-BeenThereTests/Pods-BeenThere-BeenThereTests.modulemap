@@ -1,0 +1,6 @@
+module Pods_BeenThere_BeenThereTests {
+  umbrella header "Pods-BeenThere-BeenThereTests-umbrella.h"
+
+  export *
+  module * { export * }
+}
