@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View } from 'react-native';
 import { Text, Button, ActivityIndicator } from 'react-native-paper';
 import axios from 'axios'
@@ -6,24 +6,27 @@ navigator.geolocation = require('@react-native-community/geolocation');
 
 const Capture = ({ navigation }) => {
   const [location, setLocation] = useState(null);
-  const [isLoading, setLoading] = useState(null);
+  const [isLoading, setLoading] = useState(true);
 
-	const findCoordinates = () => {
-		navigator.geolocation.getCurrentPosition(
-			position => {
-        // console.log(position.coords)
-        const saved = saveLocation(position.coords)
-        setLocation(saved);
-        setLoading(true)
-
-        setTimeout(() => {
-          setLoading(false)
-        }, 1000)
-			},
-			error => Alert.alert(error.message),
-			{ enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
-    );
-  };
+  useEffect(() => {
+    const run = async () => {
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const saved = saveLocation(position.coords)
+          setLocation(saved);
+  
+          setTimeout(() => {
+            setLoading(false)
+          }, 1000)
+        },
+        error => Alert.alert(error.message),
+        { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
+      );
+    }
+    if (!location) {
+      run()
+    }
+  }, [location])
 
   const saveLocation = async (data) => {
     const { latitude, longitude } = data
@@ -38,10 +41,6 @@ const Capture = ({ navigation }) => {
   
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f95800' }}>
-      {!location && 
-        <Button style={{marginTop: 24, borderColor: '#fff', borderWidth: 2}} color="#fff" icon="map-marker-outline" mode="outlined" onPress={findCoordinates}>
-          Capture Location
-        </Button>}
       { isLoading && <ActivityIndicator animating={true} color={"#fff"} />}
       {!isLoading && location && (
         <>
