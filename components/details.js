@@ -11,11 +11,12 @@ const Details = ({ navigation, route }) => {
     lat,
     lon,
     dateTime,
+    imageURL
   } = route.params
 
   return (
     <Card>
-      <Card.Cover source={{ uri: 'https://picsum.photos/700' }} />
+      <Card.Cover source={{ uri: imageURL }} />
       <Card.Title title={`${city}, ${country}`} subtitle={`${streetName}, ${zipcode}`} />
       <Card.Content>
         <Paragraph style={{fontWeight: "bold"}}>Visited at: {dateTime}</Paragraph>

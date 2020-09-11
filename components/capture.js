@@ -17,7 +17,7 @@ const Capture = ({ navigation }) => {
   
           setTimeout(() => {
             setLoading(false)
-          }, 1000)
+          }, 2000)
         },
         error => Alert.alert(error.message),
         { enableHighAccuracy: true, timeout: 20000, maximumAge: 1000 }
@@ -52,7 +52,8 @@ const Capture = ({ navigation }) => {
             zipcode: location._W.zipcode,
             lat: location._W.lat,
             lon: location._W.lon,
-            dateTime: location._W.dateTime
+            dateTime: location._W.dateTime,
+            imageURL: location._W.imageURL,
           })}>
             Proceed
           </Button>
