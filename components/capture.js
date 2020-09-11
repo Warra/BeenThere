@@ -46,7 +46,15 @@ const Capture = ({ navigation }) => {
       {!isLoading && location && (
         <>
           <Text style={{fontSize: 20, fontWeight: "bold", color: "#fff"}}>Location Captured Successfully</Text>
-          <Button style={{marginTop: 24, borderColor: '#fff', borderWidth: 2}} color="#fff" icon="arrow-right-bold" mode="outlined" onPress={() => navigation.navigate('Details', {...location})}>
+          <Button style={{marginTop: 24, borderColor: '#fff', borderWidth: 2}} color="#fff" icon="arrow-right-bold" mode="outlined" onPress={() => navigation.navigate('Details', {
+            city: location._W.city,
+            country: location._W.country,
+            streetName: location._W.streetName,
+            zipcode: location._W.zipcode,
+            lat: location._W.lat,
+            lon: location._W.lon,
+            dateTime: location._W.dateTime
+          })}>
             Proceed
           </Button>
         </>

@@ -10,6 +10,9 @@ const Intro = ({ navigation }) => {
       <Button style={{marginTop: 24, borderColor: '#fff', borderWidth: 2}} color="#fff" icon="step-forward" mode="outlined" onPress={() => navigation.navigate('Capture')}>
         Proceed
       </Button>
+      <Button style={{marginTop: 24, borderColor: '#fff', borderWidth: 2}} color="#fff" icon="format-list-bulleted" mode="outlined" onPress={() => navigation.navigate('LocationList')}>
+        Location List
+      </Button>
     </View>
   );
 };

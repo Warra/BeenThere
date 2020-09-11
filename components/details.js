@@ -4,7 +4,6 @@ import { Text, Button, Card, Title, Paragraph } from 'react-native-paper';
 
 const Details = ({ navigation, route }) => {
   const {
-    address,
     city,
     country,
     streetName,
@@ -12,7 +11,7 @@ const Details = ({ navigation, route }) => {
     lat,
     lon,
     dateTime,
-  } = route.params._W
+  } = route.params
 
   return (
     <Card>

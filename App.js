@@ -7,7 +7,7 @@
  */
 import 'react-native-gesture-handler';
 import React from 'react';
-import { Intro, Capture, Details } from './components'
+import { Intro, Capture, Details, LocationList } from './components'
 
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
@@ -44,7 +44,11 @@ const App: () => React$Node = () => {
             component={Details}
             options={{...options, title: 'Location Details'}}
           />
-
+          <Stack.Screen
+            name="LocationList"
+            component={LocationList}
+            options={{...options, title: 'Location List'}}
+          />
         </Stack.Navigator>
       </NavigationContainer>
     </>
