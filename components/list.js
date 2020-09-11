@@ -32,10 +32,12 @@ const LocationList = ({ navigation }) => {
         </View>
       )}
     {list && (<ScrollView>
-      {list.map(({ city, country, streetName, zipcode, created_at, lat, lon }, index) => (
+      {list.map(({ city, country, streetName, zipcode, created_at, lat, lon, imageURL }, index) => {
+        const cityName = city ? `${city}, ` : ''
+        return (
           <Surface key={`${city}-${country}-${lat}-${index}`} style={styles.surface}>
             <List.Item
-              title={`${city}, ${country}`}
+              title={`${cityName}${country}`}
               titleStyle={{ color: '#f95800' }}
               description={created_at}
               left={props => <List.Icon {...props} color={"#f95800"} icon="map-marker" />}
@@ -46,11 +48,13 @@ const LocationList = ({ navigation }) => {
                 zipcode,
                 lat,
                 lon,
-                dateTime: created_at
+                dateTime: created_at,
+                imageURL,
               })}
             />
           </Surface>
-          )
+        )
+        }
         )}
       </ScrollView>
     )}

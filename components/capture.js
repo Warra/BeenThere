@@ -41,7 +41,10 @@ const Capture = ({ navigation }) => {
   
   return (
     <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center', backgroundColor: '#f95800' }}>
-      { isLoading && <ActivityIndicator animating={true} color={"#fff"} />}
+      { isLoading && (<>
+          <Text style={{ marginBottom: 16, color: "#fff" }}>Capturing Location Details</Text>
+          <ActivityIndicator animating={true} color={"#fff"} />
+        </>)}
       {!isLoading && location && (
         <>
           <Text style={{fontSize: 20, fontWeight: "bold", color: "#fff"}}>Location Captured Successfully</Text>
@@ -55,7 +58,7 @@ const Capture = ({ navigation }) => {
             dateTime: location._W.dateTime,
             imageURL: location._W.imageURL,
           })}>
-            Proceed
+            See Location Details
           </Button>
         </>
       )}
